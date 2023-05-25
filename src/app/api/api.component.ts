@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-import { ServicesService } from '../services.service'
+import { ServicesService,getStudent } from '../services.service'
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-api',
@@ -7,10 +8,9 @@ import { ServicesService } from '../services.service'
   styleUrls: ['./api.component.scss']
 })
 export class ApiComponent implements OnInit{
-  data:any
+  data:any = [];
   constructor(public service:ServicesService){}
   ngOnInit(): void {
-    this.data = this.service.getStudent()
-    .subscribe((data)=>{this.data = data;console.log('data...',this.data)})
+    this.service.getStudent().subscribe((data)=>{this.data = of(data)});
   }
 }

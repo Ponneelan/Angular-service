@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
  
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,11 @@ export class ServicesService {
       return "one more";
     }
   getStudent(){
-    return this.http.get('http://localhost:3000/getall');
+    return this.http.get('http://localhost:3000/getall')
   }
+}
+
+export interface getStudent{
+  name:string;
+  age:number
 }
