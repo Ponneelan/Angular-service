@@ -9,10 +9,11 @@ import { ServicesService } from '../services.service'
 })
 export class NewComponent implements OnInit {
   studentList:any;
+  message:string|undefined;
   ngOnInit(): void {
     this.studentList = this.service.getStudentList();
+    this.message = this.service.getFirst();
   }
   constructor(public service:ServicesService) {
-  
   }
 }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+ 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
   getStudentList() {
     return [
       {
@@ -17,5 +18,11 @@ export class ServicesService {
         age: 22
       }
     ]
+  }
+  getFirst(){
+      return "one more";
+    }
+  getStudent(){
+    return this.http.get('http://localhost:3000/getall');
   }
 }
